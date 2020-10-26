@@ -11,3 +11,4 @@ This was based out of https://www.blog.duomly.com/implement-redux-saga-with-reac
 * React Hooks like useState, useEffect
 * Redux Hooks like useSelector, useDispatch instead of mapDispatchToProps and mapStateToProps
 * Used redux-actions which combines action creators and functions together
+* Using immer for immutability

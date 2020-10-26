@@ -1,6 +1,6 @@
 import produce from "immer";
 import { handleActions } from "redux-actions";
-import { getUsersRequested, getUsersSuccess, getUserFailed } from "../actions";
+import { getUsersSuccess, getUserFailed } from "../actions";
 
 const initialState = {
     users: [],
@@ -29,6 +29,10 @@ const initialState = {
 const users = handleActions({
     [getUsersSuccess]: produce((draft, action) => {
         draft.users = action.users;
+        return draft;
+    }),
+    [getUserFailed]: produce((draft, action) => {
+        draft.error = action.error;
         return draft;
     })
 }, initialState);
