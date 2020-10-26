@@ -1,3 +1,5 @@
+import produce from "immer";
+import { handleActions } from "redux-actions";
 import { getUsersRequested, getUsersSuccess, getUserFailed } from "../actions";
 
 const initialState = {
@@ -6,7 +8,7 @@ const initialState = {
     error: null
 }
 
-export default function users(state = initialState, action) {
+/*export default function users(state = initialState, action) {
     switch(action.type) {
         case getUsersRequested().type:
             return {
@@ -21,4 +23,15 @@ export default function users(state = initialState, action) {
         default:
             return state;
     }
-}
+}*/
+
+
+const users = handleActions({
+    [getUsersSuccess]: produce((draft, action) => {
+        draft.users = action.users;
+        return draft;
+    })
+}, initialState);
+
+
+export default users;
